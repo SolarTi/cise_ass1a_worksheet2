@@ -1,22 +1,29 @@
-/*
- * @Author: your name
- * @Date: 2022-03-18 03:59:32
- * @LastEditTime: 2022-03-18 11:57:57
- * @LastEditors: your name
- * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- * @FilePath: \CISE_Repos\cise_ass1a_worksheet2\frontend\src\App.js
- */
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Welcome to CISE – the home of learning and fun</h1>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      count: 0,
+    }
+  }
+
+  makeIncrementer = amount => () =>
+    this.setState(prevState => ({
+      count: prevState.count + amount,
+    }));
+
+  increment = this.makeIncrementer(1);
+
+  render() {
+    return (
+      <div>
+        <p>Count: {this.state.count}</p>
+        <button className="increment" onClick={this.increment}>Increment count</button>
+      </div>
+    )
+  }
 }
 
 export default App;
+
